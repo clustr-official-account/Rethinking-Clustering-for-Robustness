@@ -1,5 +1,7 @@
 # ClusTR: Clustering Training for Robustness - PyTorch implementation
-This anonymous repository implements "ClusTR: Clustering Training for Robustness" in PyTorch, a work currently under review for NeurIPS 2020. Running this code succesfully reproduces the results for ClusTR, as reported in the manuscript.
+
+
+This repository implements "ClusTR: Clustering Training for Robustness" in PyTorch, a work currently under review for NeurIPS 2020. Running this code succesfully reproduces the results for ClusTR, as reported in the manuscript.
 
 ClusTR is a theoretically-motivated framework for training Deep Neural Networks (DNNs) for adversarial robustness.
 
