@@ -112,7 +112,7 @@ def main():
         )
         return
 
-    best_acc, best_pgd_acc = -np.inf, -np.inf
+    best_acc = -np.inf
     # Iterate through epochs
     for epoch in range(args.epochs):
         model, batch_builder, magnet_data, train_acc, test_acc, train_loss, \
@@ -124,25 +124,13 @@ def main():
                 minibatch_replays=args.minibatch_replays,
                 actual_trades=args.actual_trades
         )
+        best_acc = max(best_acc, test_acc)
         # Report epoch and save current model
         report_epoch_and_save(args.checkpoint, epoch, model, train_acc, 
             test_acc, train_loss, test_loss, magnet_data)
-        # Eval estimation of PGD accuracy of current model. Extract data
-        df = eval_robustness(
-            model, testloader, testset, test_labels, args.checkpoint, 
-            distrib_params, device, HARDCODED_EPS, best=False,
-            rand_restarts=5, iterations=5, save_df=False, alpha=ALPHA_STEP
-        )
-        pgd_fr = df['flip_rates'].values[1]
-        pgd_acc = df['test_set_accs'].values[1]
-        # Check if current model is the best model. Update if it is
-        best_acc, best_pgd_acc, is_best = check_best_model(best_acc, test_acc, 
-            best_pgd_acc, pgd_acc, threshold=BEST_MODEL_THRESH)
-        if is_best:
-            copy_best_checkpoint(args.checkpoint)
         # Update log with results
         update_log(optimizer, epoch, train_loss, train_acc, test_loss, test_acc,
-            pgd_acc, pgd_fr, LOG_PATH)
+            LOG_PATH)
         # Update scheduler
         scheduler.step()
 

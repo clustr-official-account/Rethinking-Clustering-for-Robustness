@@ -8,7 +8,7 @@ from models.resnet import ResNet18, ResNet50, ResNet18Wide
 
 # Constants
 LOG_HEADERS = ['Epoch', 'LR', 'Train loss', 'Train acc.', 'Test loss', \
-    'Test acc.', 'PGD acc.', 'Flip rate']
+    'Test acc.']
 BEST_MODEL_THRESHOLDS = {
     'cifar10'   : 80.0,
     'cifar100'  : 60.0,

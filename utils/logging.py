@@ -17,12 +17,11 @@ def print_training_params(args, txt_file_path):
 
 
 def update_log(optimizer, epoch, train_loss, train_acc, test_loss, test_acc,
-        pgd_acc, pgd_fr, log_path):
+        log_path):
     lr = get_lr(optimizer)
     print_to_log(
         f'{epoch+1}\t {lr:1.0E}\t {train_loss:5.4f} \t '
-        f'{train_acc:4.3f}\t\t {test_loss:5.4f}\t {test_acc:4.3f}\t\t '
-        f'{pgd_acc:4.3f}\t\t {pgd_fr:4.3f}\t\t ',
+        f'{train_acc:4.3f}\t\t {test_loss:5.4f}\t {test_acc:4.3f}\t\t',
         log_path
     )
 

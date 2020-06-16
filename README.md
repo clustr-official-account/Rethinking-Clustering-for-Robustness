@@ -45,12 +45,11 @@ This command will run training of ClusTR on CIFAR10 for 30 epochs, starting from
 When the command finishes running, the directory `expA` will have five files, described next.
 * `attack_results_ext.csv`: a `csv` file with the results from the PGD attack. There are two columns: _epsilons_ and _test_set_accs_. Each row of the file shows the resulting PGD accuracy at the corresponding value of epsilon (the strength of the attack).
 * `checkpoint.pth`: a dictionary with the information from the model at the _last_ epoch. This dictionary contains the _state_dict_ of the model, which is found under the key `'state_dict'`. To see the _state_dict_ of the model, run `torch.load('checkpoint.pth', map_location='cpu')['state_dict']` on a python terminal.
-* `log.txt`: the log of the training procedure. It contains 8 columns, namely: (1) Epoch, (2) LR, (3) Train loss, (4) Train acc., (5) Test loss, (6) Test acc., (7) PGD acc., and (8) Flip rate. Each row corresponds to a different epoch. For that epoch, we report: the number of the epoch, the learning rate during the epoch, the loss in the training set, the accuracy in the train set, the loss in the test set, the accuracy in the test set, an estimate of the PGD accuracy on the test set (computed with a PGD attack with 5 restarts and 5 steps), and the corresponding flip rate of such PGD attack.
-* `model_best.pth`: a dictionary similar to `checkpoint.pth`, just that it is from the best model, where "best" is defined based on the estimate of the PGD accuracy, as reported in the log.
+* `log.txt`: the log of the training procedure. It contains 8 columns, namely: (1) Epoch, (2) LR, (3) Train loss, (4) Train acc., (5) Test loss, and (6) Test acc. Each row corresponds to a different epoch. For that epoch, we report: the number of the epoch, the learning rate during the epoch, the loss in the training set, the accuracy in the train set, the loss in the test set, and the accuracy in the test set.
 * `params.txt`: a `txt` file with a single line reporting all the parameters with which the experiment was run, as given by the parameters needed by the parser defined in `utils/train_setting.py`.
 
 ## Training ClusTR+QTRADES
-As for training ClusTR alone, to train ClusTR+QTRADES, pre-trained weights are required. These pre-trained weights are shipped within the zip file in which this implementation is presented. Please refer to the [Trainin ClusTR Section](##Training-ClusTR) above.
+As for training ClusTR alone, to train ClusTR+QTRADES, pre-trained weights are required. These pre-trained weights are shipped within the zip file in which this implementation is presented. Please refer to the [Training ClusTR Section](##training-clustr) above.
 
 To run training, run
 
