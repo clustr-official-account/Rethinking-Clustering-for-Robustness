@@ -37,7 +37,7 @@ To train ClusTR, pre-trained weights are required. These pre-trained weights are
 To run training, run
 
 ```bash
-python main_clustr.py --checkpoint expA --iterations 20 --dataset cifar10 --L 20 --pretrained-path pretrained_weights/resnet18.pt --lr 0.0001 --epochs 30
+python main_clustr.py --checkpoint expA --iterations 20 --dataset cifar10 --L 20 --pretrained-path pretrained_weights/resnet18.pt --lr 0.0001 --epochs 30 --save-all
 ```
 
 This command will run training of ClusTR on CIFAR10 for 30 epochs, starting from the pre-trained weights at `pretrained_weights/resnet18.pt`, with a starting learning rate of 0.0001. The results will be saved at directory `expA`. The evaluation procedure will consider the closest 20 clusters, and at the end of training, PGD \\(\ell_\infty\\) attacks (l-infinity norm bounded attacks) with 20 iterations will be run for assessing robustness. 
@@ -47,6 +47,7 @@ When the command finishes running, the directory `expA` will have five files, de
 * `checkpoint.pth`: a dictionary with the information from the model at the _last_ epoch. This dictionary contains the _state_dict_ of the model, which is found under the key `'state_dict'`. To see the _state_dict_ of the model, run `torch.load('checkpoint.pth', map_location='cpu')['state_dict']` on a python terminal.
 * `log.txt`: the log of the training procedure. It contains 8 columns, namely: (1) Epoch, (2) LR, (3) Train loss, (4) Train acc., (5) Test loss, and (6) Test acc. Each row corresponds to a different epoch. For that epoch, we report: the number of the epoch, the learning rate during the epoch, the loss in the training set, the accuracy in the train set, the loss in the test set, and the accuracy in the test set.
 * `params.txt`: a `txt` file with a single line reporting all the parameters with which the experiment was run, as given by the parameters needed by the parser defined in `utils/train_setting.py`.
+* `checkpoint_X.pth`: because we passed the flag `--save-all`, a checkpoint for the model is saved after every epoch, and is stored in these files.
 
 ## Training ClusTR+QTRADES
 As for training ClusTR alone, to train ClusTR+QTRADES, pre-trained weights are required. These pre-trained weights are in the `pretrained_weights` directory. Please refer to the [Training ClusTR Section](##training-clustr) above for details.
@@ -54,7 +55,7 @@ As for training ClusTR alone, to train ClusTR+QTRADES, pre-trained weights are r
 To run training, run
 
 ```bash
-python main_clustr.py --checkpoint expB --iterations 20 --dataset cifar10 --L 20 --pretrained-path pretrained_weights/resnet18.pt --lr 0.0001 --epochs 30 --consistency-lambda 12.5
+python main_clustr.py --checkpoint expB --iterations 20 --dataset cifar10 --L 20 --pretrained-path pretrained_weights/resnet18.pt --lr 0.0001 --epochs 30 --consistency-lambda 12.5 --save-all
 ```
 
 
