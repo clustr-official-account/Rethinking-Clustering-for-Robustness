@@ -142,7 +142,8 @@ def main():
         distrib_params=distrib_params, device=device, 
         standard_epsilons=STANDARD_EPSILONS, alpha_step=ALPHA_STEP, L=args.L, 
         seed=args.seed, normalize_probs=not args.not_normalize,
-        restarts=args.restarts, attack_iters=args.iterations
+        restarts=args.restarts, attack_iters=args.iterations,
+        evaluate_ckpt=f'checkpoint_{epoch}.pth'
     )
 
 if __name__ == '__main__':
