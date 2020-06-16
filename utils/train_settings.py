@@ -75,6 +75,8 @@ def parse_settings(magnet_training):
         help='run with actual trades implementation')
     parser.add_argument('--pretrained-path', type=str, default=None,
         help='path to pretrained model')
+    parser.add_argument('--save-all', action='store_true', default=False,
+        help='save all checkpoints (every epoch)')
     # Attack-related params
     parser.add_argument('--restarts', type=int, default=10,
         help='num of PGD restarts for evaluation')

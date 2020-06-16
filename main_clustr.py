@@ -127,7 +127,7 @@ def main():
         best_acc = max(best_acc, test_acc)
         # Report epoch and save current model
         report_epoch_and_save(args.checkpoint, epoch, model, train_acc, 
-            test_acc, train_loss, test_loss, magnet_data)
+            test_acc, train_loss, test_loss, magnet_data, args.save_all)
         # Update log with results
         update_log(optimizer, epoch, train_loss, train_acc, test_loss, test_acc,
             LOG_PATH)

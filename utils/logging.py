@@ -44,7 +44,7 @@ def copy_best_checkpoint(checkpoint, filename='checkpoint.pth'):
 
 
 def report_epoch_and_save(checkpoint, epoch, model, train_acc, test_acc, 
-        train_loss, test_loss, magnet_data):
+        train_loss, test_loss, magnet_data, save_all):
     text_for_print = f'>> Epoch {epoch} finished. ' \
         f'Train: top-1 acc: {train_acc:4.3f} -- loss: {train_loss:4.3f} ' \
         f'Test: top-1 acc: {test_acc:4.3f} -- loss: {test_loss:4.3f} '
@@ -67,6 +67,9 @@ def report_epoch_and_save(checkpoint, epoch, model, train_acc, test_acc,
         model_info.update(magnet_data_stuff)
 
     save_checkpoint(model_info=model_info, checkpoint=checkpoint)
+    if save_all:
+        save_checkpoint(model_info=model_info, checkpoint=checkpoint,
+            filename=f'checkpoint_{epoch}.pth')
 
 
 def check_best_model(best_acc, test_acc, best_pgd_acc, pgd_acc, threshold=80):
