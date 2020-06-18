@@ -50,12 +50,12 @@ When the command finishes running, the directory `expA` will have five files, de
 * `checkpoint_X.pth`: because we passed the flag `--save-all`, a checkpoint for the model is saved after every epoch, and is stored in these files.
 
 ## Training ClusTR+QTRADES
-As for training ClusTR alone, to train ClusTR+QTRADES, pre-trained weights are required. These pre-trained weights are in the `pretrained_weights` directory. Please refer to the [Training ClusTR Section](##training-clustr) above for details.
+As for training ClusTR alone, to train ClusTR+QTRADES, pre-trained weights are required. These pre-trained weights are in the `pretrained_weights` directory. Please refer to the [Training ClusTR Section](#training-clustr) above for details.
 
 To run training, run
 
 ```bash
-python main_clustr.py --checkpoint expB --iterations 20 --dataset cifar10 --L 20 --pretrained-path pretrained_weights/resnet18.pt --lr 0.0001 --epochs 30 --consistency-lambda 12.5 --save-all
+python main_clustr.py --checkpoint expB --pretrained-path pretrained_weights/resnet18.pt --lr 0.0001 --epochs 25 --consistency-lambda 8
 ```
 
 
