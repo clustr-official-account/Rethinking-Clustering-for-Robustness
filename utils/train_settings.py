@@ -4,7 +4,7 @@ import os.path as osp
 # The models
 import sys
 sys.path.append('../models') # This is gross, I know
-from models.resnet import ResNet18, ResNet50, ResNet18Wide
+from models.resnet import ResNet18
 
 # Constants
 LOG_HEADERS = ['Epoch', 'LR', 'Train loss', 'Train acc.', 'Test loss', \
@@ -15,9 +15,7 @@ BEST_MODEL_THRESHOLDS = {
     'svhn'      : 85.0
 }
 MODEL_INITS = {
-    'resnet18'  : ResNet18,
-    'resnet50'  : ResNet50,
-    'wrn18'     : ResNet18Wide
+    'resnet18'  : ResNet18
 }
 ALPHA_STEP = 2/255
 HARDCODED_EPS = torch.tensor([8/255,])
@@ -26,7 +24,7 @@ STANDARD_EPSILONS = torch.tensor([2/255, 8/255, 16/255, .1])
 def parse_settings(magnet_training):
     # Training settings
     dataset_choices = ['cifar10','cifar100','svhn']
-    arch_choices = ['resnet18','resnet50','wrn18']
+    arch_choices = ['resnet18']
     parser = argparse.ArgumentParser(description='PyTorch Magnet Loss')
     parser.add_argument('--epochs', type=int, default=90,
         help='training epochs (def.: 90)')

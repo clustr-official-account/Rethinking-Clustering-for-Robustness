@@ -11,7 +11,7 @@ import torch.backends.cudnn as cudnn
 from torch.optim.lr_scheduler import MultiStepLR
 # From magnet_loss
 from utils.magnet_loss import MagnetLoss
-from utils.attacks import eval_robustness, final_attack_eval
+from utils.attacks import final_attack_eval
 from utils.magnet_training import magnet_epoch_wrapper
 from utils.setups import magnet_assertions, get_batch_builders, get_magnet_data
 from utils.logging import (report_epoch_and_save, print_to_log, update_log,
@@ -143,7 +143,7 @@ def main():
         standard_epsilons=STANDARD_EPSILONS, alpha_step=ALPHA_STEP, L=args.L, 
         seed=args.seed, normalize_probs=not args.not_normalize,
         restarts=args.restarts, attack_iters=args.iterations,
-        evaluate_ckpt=os.path.join(args.checkpoint, 'checkpoint.pth')
+        evaluate_ckpt=osp.join(args.checkpoint, 'checkpoint.pth')
     )
 
 if __name__ == '__main__':
