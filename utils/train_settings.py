@@ -54,8 +54,8 @@ def parse_settings(magnet_training):
         help='clusters to sample per iteration (def.: 12) -- bs = m*d')
     parser.add_argument('--L', type=int, default=10,
         help='nearest neighbors to consider (def.: 10)')
-    parser.add_argument('--alpha', type=float, default=1.0,
-        help='alpha for magnet loss (def.: 1.0)')
+    parser.add_argument('--alpha', type=float, default=12.5,
+        help='alpha for magnet loss (def.: 12.5)')
     # Adversarial training param
     parser.add_argument('--minibatch-replays', type=int, default=0,
         help='M parameter for free adversarial training')
