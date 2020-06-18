@@ -11,9 +11,8 @@ import torch.nn as nn
 import torch.nn.functional as F
 
 def final_attack_eval(model, testloader, testset, test_labels, checkpoint,
-        distrib_params, device, standard_epsilons, alpha_step, L, seed, 
-        normalize_probs, evaluate_ckpt=None, restarts=10, attack_iters=50,
-        evaluate_only=False):
+        distrib_params, device, alpha_step, L, seed, normalize_probs, 
+        evaluate_ckpt=None, restarts=10, attack_iters=50):
     checkpoint1 = evaluate_ckpt if evaluate_ckpt is not None else checkpoint
     external_eval_dataset(
         seed=seed, checkpoint=checkpoint1, device=device, model=model, 

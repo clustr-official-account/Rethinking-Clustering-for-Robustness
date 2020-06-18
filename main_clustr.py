@@ -25,7 +25,7 @@ cudnn.deterministic = True
 cudnn.benchmark = False
 
 args, LOG_PATH, LOG_HEADERS, BEST_MODEL_THRESH, MODEL_INIT, ALPHA_STEP, \
-    HARDCODED_EPS, STANDARD_EPSILONS = parse_settings(magnet_training=True)
+    HARDCODED_EPS = parse_settings(magnet_training=True)
 
 def train_epoch(model, epoch, optimizer, trainloader, device, trainset, 
         train_labels, testset, test_labels, batch_builder, print_freq, 
@@ -104,11 +104,10 @@ def main():
     if args.evaluate_ckpt is not None:
         final_attack_eval(
             model, testloader, testset, test_labels, checkpoint=args.checkpoint, 
-            distrib_params=distrib_params, device=device, 
-            standard_epsilons=STANDARD_EPSILONS, 
+            distrib_params=distrib_params, device=device,
             evaluate_ckpt=args.evaluate_ckpt, alpha_step=ALPHA_STEP, L=args.L, 
             seed=args.seed, normalize_probs=not args.not_normalize,
-            restarts=args.restarts, attack_iters=args.iterations, evaluate_only=True
+            restarts=args.restarts, attack_iters=args.iterations,
         )
         return
 
@@ -139,9 +138,8 @@ def main():
     # Run attack on best model
     final_attack_eval(
         model, testloader, testset, test_labels, checkpoint=args.checkpoint, 
-        distrib_params=distrib_params, device=device, 
-        standard_epsilons=STANDARD_EPSILONS, alpha_step=ALPHA_STEP, L=args.L, 
-        seed=args.seed, normalize_probs=not args.not_normalize,
+        distrib_params=distrib_params, device=device, alpha_step=ALPHA_STEP, 
+        L=args.L, seed=args.seed, normalize_probs=not args.not_normalize,
         restarts=args.restarts, attack_iters=args.iterations,
         evaluate_ckpt=osp.join(args.checkpoint, 'checkpoint.pth')
     )

@@ -19,7 +19,6 @@ MODEL_INITS = {
 }
 ALPHA_STEP = 2/255
 HARDCODED_EPS = torch.tensor([8/255,])
-STANDARD_EPSILONS = torch.tensor([2/255, 8/255, 16/255, .1])
 
 def parse_settings(magnet_training):
     # Training settings
@@ -92,4 +91,4 @@ def parse_settings(magnet_training):
     BEST_MODEL_THRESH = BEST_MODEL_THRESHOLDS[args.dataset]
 
     return (args, LOG_PATH, LOG_HEADERS, BEST_MODEL_THRESH, MODEL_INIT, 
-        ALPHA_STEP, HARDCODED_EPS, STANDARD_EPSILONS)
+        ALPHA_STEP, HARDCODED_EPS)
