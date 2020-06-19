@@ -31,8 +31,8 @@ def parse_settings(magnet_training):
         help='batch size for standard (regular) training')
     parser.add_argument('--test-batch', type=int, default=64,
         help='batch size for testing')
-    parser.add_argument('--lr', type=float, default=1e-3,
-        help='learning rate (default: 1e-3)')
+    parser.add_argument('--lr', type=float, default=1e-4,
+        help='learning rate (default: 1e-4)')
     parser.add_argument('--dataset', type=str, default='cifar10',
         help='dataset to use', choices=dataset_choices)
     parser.add_argument('--checkpoint', required=True, type=str,
