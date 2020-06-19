@@ -49,7 +49,7 @@ To train, run
 python main_clustr.py --checkpoint clustr_qtrades --pretrained-path pretrained_weights/resnet18.pt --epochs 25 --consistency-lambda 8
 ```
 
-This command will run training of ClusTR+QTRADES on CIFAR10 for 25 epochs, starting from the pre-trained weights at `pretrained_weights/resnet18.pt`. The results will be saved at directory `clustr_qtrades`. 
+This command will run training of ClusTR+QTRADES on CIFAR10 for 25 epochs, starting from the pre-trained weights at `pretrained_weights/resnet18.pt`, with a coefficient for the TRADES loss of 8, _i.e._ the <img src="https://render.githubusercontent.com/render/math?math=\lambda"> in Equation (5) in the [manuscript](https://arxiv.org/abs/2006.07682). The results will be saved at directory `clustr_qtrades`. 
 
 The evaluation procedure will consider the closest 20 clusters, and at the end of training, PGD <img src="https://render.githubusercontent.com/render/math?math=\ell_\infty"> attacks (l-infinity norm bounded attacks) with 20 iterations will be run for assessing robustness. 
 
