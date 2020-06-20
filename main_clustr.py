@@ -135,14 +135,6 @@ def main():
 
     # Report best accuracy of all training
     print(f'Best accuracy: {best_acc:4.3f}')
-    # Run attack on best model
-    final_attack_eval(
-        model, testloader, testset, test_labels, checkpoint=args.checkpoint, 
-        distrib_params=distrib_params, device=device, alpha_step=ALPHA_STEP, 
-        L=args.L, seed=args.seed, normalize_probs=not args.not_normalize,
-        restarts=args.restarts, attack_iters=args.iterations,
-        evaluate_ckpt=osp.join(args.checkpoint, 'checkpoint.pth')
-    )
 
 if __name__ == '__main__':
     main()
