@@ -68,10 +68,11 @@ python main_clustr.py --checkpoint clustr_qtrades_pgd100 --evaluate-ckpt experim
 ## Citation
 If you find our work useful, please consider citing it as
 ```bash
-@article{alfarra2020clusttr,
+@misc{alfarra2020clustr,
     title={ClusTR: Clustering Training for Robustness},
     author={Motasem Alfarra and Juan C. Pérez and Adel Bibi and Ali Thabet and Pablo Arbeláez and Bernard Ghanem},
     year={2020},
-    journal={arXiv:2006.07682}
+    eprint={2006.07682},
+    archivePrefix={arXiv}
 }
 ```
